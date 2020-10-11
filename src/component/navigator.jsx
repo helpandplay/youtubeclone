@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navigator = (props) => {
   const searchRef = useRef();
@@ -9,10 +10,12 @@ const Navigator = (props) => {
   return (
     <>
       <header className="header">
-        <figure className="logo">
-          <i className="fab fa-earlybirds" />
-          <span>PenguinTube</span>
-        </figure>
+        <Link to="/">
+          <figure className="logo">
+            <i className="fab fa-earlybirds" />
+            <span>PenguinTube</span>
+          </figure>
+        </Link>
         <form onSubmit={handleSearch} className="search_form">
           <input
             ref={searchRef}
