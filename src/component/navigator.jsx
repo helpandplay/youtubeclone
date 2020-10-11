@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, memo } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navigator = (props) => {
+const Navigator = memo((props) => {
   const searchRef = useRef();
   const handleSearch = (e) => {
     e.preventDefault();
@@ -30,6 +30,6 @@ const Navigator = (props) => {
       </header>
     </>
   );
-};
+});
 
 export default Navigator;
