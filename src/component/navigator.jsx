@@ -7,13 +7,17 @@ const Navigator = memo((props) => {
     e.preventDefault();
     props.onSearch(searchRef.current.value);
   };
+  const handleLogoBtn = () => {
+    props.onLogoBtn(undefined);
+    searchRef.current.value = '';
+  };
   /*
     로고를 눌렀을 때 새로고침이 되지 않음
   */
   return (
     <>
       <header className="header">
-        <Link to="/">
+        <Link to="/" onClick={handleLogoBtn}>
           <figure className="logo">
             <i className="fab fa-earlybirds" />
             <span>PenguinTube</span>

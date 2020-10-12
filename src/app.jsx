@@ -34,13 +34,16 @@ const App = (props) => {
   const onSearch = (searchingBy) => {
     setSearchingBy(searchingBy);
   };
+  const onLogoBtn = (searched) => {
+    setSearchingBy(searched);
+  };
   useEffect(() => {
     setSearchingBy(searchingBy);
     getVideos(searchingBy);
   }, [searchingBy]);
   return (
     <BrowserRouter>
-      <Navigator onSearch={onSearch} />
+      <Navigator onSearch={onSearch} onLogoBtn={onLogoBtn} />
       <Route exact path="/">
         <Videos videos={videos} searched={searched} />
       </Route>
