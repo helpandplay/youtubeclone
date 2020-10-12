@@ -23,7 +23,6 @@ const App = (props) => {
       setSearched(true);
     }
     const videos = await callAPI(url);
-    console.log(videos);
     setVideos(videos);
   });
   const callAPI = useCallback((url) => {

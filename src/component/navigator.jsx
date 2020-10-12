@@ -17,7 +17,7 @@ const Navigator = memo((props) => {
   return (
     <>
       <header className="header">
-        <Link to="/" onClick={handleLogoBtn}>
+        <Link to="/" onClick={handleLogoBtn} className="home_link">
           <figure className="logo">
             <i className="fab fa-earlybirds" />
             <span>PenguinTube</span>

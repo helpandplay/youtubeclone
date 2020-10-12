@@ -21,21 +21,23 @@ const VideoDetail = (props) => {
   return (
     <>
       <main className="video_detail">
-        <iframe
-          id="player"
-          src={`https://www.youtube.com/embed/${id}?autoplay=1`}
-          width="640"
-          height="360"
-          frameBorder="0"
-        />
-        <div className="info">
-          {title && <h4>{title}</h4>}
-          {description && <p>{description}</p>}
-        </div>
+        <section>
+          <iframe
+            id="player"
+            src={`https://www.youtube.com/embed/${id}?autoplay=1`}
+            width="640"
+            height="360"
+            frameBorder="0"
+          />
+          <div className="info">
+            {title && <h4>{title}</h4>}
+            {description && <p>{description}</p>}
+          </div>
+        </section>
+        <aside>
+          <Videos videos={videos} />
+        </aside>
       </main>
-      <aside>
-        <Videos videos={videos} />
-      </aside>
     </>
   );
 };
