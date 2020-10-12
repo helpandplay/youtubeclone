@@ -92,7 +92,7 @@ body {
 .video_items {
   width: 100%;
   height: 100%;
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
 }
 .video_item {
@@ -146,6 +146,11 @@ body {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+@media screen and (max-width: 768px) {
+  .video_item {
+    width: 100%;
+  }
+}
 /* Videos end */
 
 /* VideoDetail start */
@@ -160,5 +165,13 @@ body {
 }
 .video_detail aside {
   flex: 1;
+}
+@media screen and (max-width: 1024px) {
+  .video_detail {
+    flex-direction: column;
+  }
+  aside {
+    margin-top: 100px;
+  }
 }
 /* VideoDetail end */
