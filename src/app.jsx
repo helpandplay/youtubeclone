@@ -8,6 +8,7 @@ import Videos from './component/videos.jsx';
 
 const App = (props) => {
   const [searchingBy, setSearchingBy] = useState(undefined);
+  const [searched, setSearched] = useState(false);
   const [videos, setVideos] = useState(undefined);
 
   const getVideos = useCallback(async (searchingBy = undefined) => {
@@ -16,10 +17,13 @@ const App = (props) => {
     let url = undefined;
     if (searchingBy === undefined) {
       url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=${maxResults}&key=${API_KEY}`;
+      setSearched(false);
     } else {
       url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${searchingBy}&key=${API_KEY}`;
+      setSearched(true);
     }
     const videos = await callAPI(url);
+    console.log(videos);
     setVideos(videos);
   });
   const callAPI = useCallback((url) => {
@@ -27,7 +31,7 @@ const App = (props) => {
       .then((response) => response.json())
       .catch((error) => console.log(error));
   });
-  const onSearch = () => {
+  const onSearch = (searchingBy) => {
     setSearchingBy(searchingBy);
   };
   useEffect(() => {
@@ -38,10 +42,10 @@ const App = (props) => {
     <BrowserRouter>
       <Navigator onSearch={onSearch} />
       <Route exact path="/">
-        <Videos onSearch={searchingBy} videos={videos} />
+        <Videos videos={videos} searched={searched} />
       </Route>
       <Switch>
-        <Route path="/:id" children={<VideoDetail />} />
+        <Route path="/:id" children={<VideoDetail videos={videos} />} />
       </Switch>
     </BrowserRouter>
   );

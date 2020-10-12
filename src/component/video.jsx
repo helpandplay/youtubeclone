@@ -2,17 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Video = (props) => {
-  console.log(props.data);
   return (
     <li className="video_item">
-      <Link to={`/${props.data.id}`}>
+      <Link to={`/${props.id}`}>
         <figure className="thumbnail">
           <div className="thumbnail-cover">
             <span>Play Now</span>
             <i className="fas fa-play"></i>
           </div>
           <img
-            src={props.data.snippet.thumbnails.standard.url}
+            src={props.data.snippet.thumbnails.default.url}
             alt="thumbnail"
           />
         </figure>
